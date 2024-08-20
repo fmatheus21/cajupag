@@ -1,0 +1,60 @@
+authorization-server:
+  security:
+    registred-client:
+      client-id-one: ${CLIENT_ID_ONE:client_credentials}
+      client-secret-one: ${CLIENT_SECRET_ONE:975731ab-34d0-11ee-8422-581122c7752d}
+      client-id-two: ${CLIENT_ID_TWO:authorization_code}
+      client-secret-two: ${CLIENT_SECRET_TWO:17686e8b-34d2-11ee-8422-581122c7752d}
+    jks:
+      keypass: ${JKS_KEYPASS:123456}
+      storepass: ${JKS_STOREPASS:123456}
+      alias: ${JKS_ALIAS:oauthkey}
+      path: ${JKS_PATH:keystore/oauthkey.jks}
+    rsa:
+      private-key: ${RSA_PRIVATE_KEY:classpath:certs/private.pem}
+      public-key: ${RSA_PUBLIC_KEY:classpath:certs/public.pem}
+  feign:
+    location:
+      config:
+        connectTimeout: 1800000
+        readTimeout: 1800000
+        loggerLevel: full
+      resource:
+        find-cep: https://viacep.com.br/ws/%s/json/
+logging:
+  pattern:
+    level: '%5p [${spring.properties.name:},%X{traceId:-},%X{spanId:-}]'
+server:
+  port: 9000
+  servlet:
+    context-path: ${CONTEXT_PATH:/api/v1}
+spring:
+  application:
+    name: authorization-server
+  data:
+    web:
+      pageable:
+        default-page-size: 20
+        max-page-size: 50
+        one-indexed-parameters: false
+        page-parameter: page
+        size-parameter: size
+      sort:
+        sort-parameter: sort
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 210683
+    url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+    username: root
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      fail_on_empty_beans: false
+  flyway:
+    password: 210683
+    url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
+    user: root
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: ${JPA_SHOW_SQL:false}
+
