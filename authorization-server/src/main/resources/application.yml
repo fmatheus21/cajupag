@@ -43,7 +43,7 @@ spring:
         sort-parameter: sort
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: 210683
+    password: ${DATASOURCE_PASSWORD:210683}
     url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     username: root
   jackson:
@@ -51,7 +51,7 @@ spring:
     serialization:
       fail_on_empty_beans: false
   flyway:
-    password: 210683
+    password: ${DATASOURCE_PASSWORD:210683}
     url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     user: root
   jpa:

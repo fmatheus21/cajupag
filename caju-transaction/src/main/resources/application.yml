@@ -1,18 +1,3 @@
-authorization-server:
-  security:
-    registred-client:
-      client-id-one: ${CLIENT_ID_ONE:client_credentials}
-      client-secret-one: ${CLIENT_SECRET_ONE:975731ab-34d0-11ee-8422-581122c7752d}
-      client-id-two: ${CLIENT_ID_TWO:authorization_code}
-      client-secret-two: ${CLIENT_SECRET_TWO:17686e8b-34d2-11ee-8422-581122c7752d}
-    jks:
-      keypass: ${JKS_KEYPASS:123456}
-      storepass: ${JKS_STOREPASS:123456}
-      alias: ${JKS_ALIAS:oauthkey}
-      path: ${JKS_PATH:keystore/oauthkey.jks}
-    rsa:
-      private-key: ${RSA_PRIVATE_KEY:classpath:certs/private.pem}
-      public-key: ${RSA_PUBLIC_KEY:classpath:certs/public.pem}
 logging:
   pattern:
     level: '%5p [${spring.properties.name:},%X{traceId:-},%X{spanId:-}]'
@@ -35,14 +20,23 @@ spring:
         sort-parameter: sort
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: 210683
+    password: ${DATASOURCE_PASSWORD:210683}
     url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     username: root
   jackson:
-    default-property-inclusion: non_null
+    #default-property-inclusion: non_null
     serialization:
       fail_on_empty_beans: false
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: ${JPA_SHOW_SQL:false}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${JWT_ISSUER_URI:http://localhost:9000/api/v1}
+          jwk-set-uri: ${JWT_JWK_URI:http://localhost:9000/api/v1/oauth2/jwks}
+
+
+
 
