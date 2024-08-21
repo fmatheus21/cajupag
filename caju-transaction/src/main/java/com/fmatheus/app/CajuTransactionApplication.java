@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CajupagApplication {
+public class CajuTransactionApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CajupagApplication.class, args);
+		SpringApplication.run(CajuTransactionApplication.class, args);
 	}
 
 }

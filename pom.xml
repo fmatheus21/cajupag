@@ -16,7 +16,7 @@
 
 	<modules>
 		<module>authorization-server</module>
-		<!--<module>user-service</module>-->
+		<module>caju-transaction</module>
 	</modules>
 
 	<properties>
