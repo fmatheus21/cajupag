@@ -5,7 +5,6 @@ import com.fmatheus.app.controller.util.AppUtil;
 import com.fmatheus.app.model.entity.Account;
 import com.fmatheus.app.model.entity.AccountBalanceJoin;
 import com.fmatheus.app.model.service.AccountService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
