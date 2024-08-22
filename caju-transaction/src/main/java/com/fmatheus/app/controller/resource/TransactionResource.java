@@ -1,6 +1,7 @@
 package com.fmatheus.app.controller.resource;
 
 import com.fmatheus.app.controller.dto.request.TransactionRequest;
+import com.fmatheus.app.controller.facade.TransactionFacade;
 import com.fmatheus.app.controller.security.authorize.AllAuthorize;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,11 @@ import java.util.Map;
 @RequestMapping("/transactions")
 public class TransactionResource {
 
+    private final TransactionFacade facade;
 
     @AllAuthorize
     @PostMapping
     public Map<String, String> performTransaction(@RequestBody @Valid TransactionRequest request, @AuthenticationPrincipal Jwt jwt) {
-        var account = jwt.getClaims().get("account").toString();
-        return null;
+        return this.facade.performTransaction(request, jwt);
     }
 }
