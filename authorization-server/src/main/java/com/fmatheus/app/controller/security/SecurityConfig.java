@@ -18,6 +18,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -52,6 +53,7 @@ import java.security.KeyStore;
 import java.time.Duration;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -196,10 +198,15 @@ public class SecurityConfig {
 
                 CustomUserDetails customUserDetails = customUser.customUserDetails();
 
+                Set<String> authorities = customUserDetails.getAuthorities().stream()
+                        .map(GrantedAuthority::getAuthority)
+                        .collect(Collectors.toSet());
+
                 if (context.getTokenType().getValue().equals("access_token")) {
                     context.getClaims()
                             .claim("account", customUserDetails.getAccount().getId())
-                            .claim("card_number", Objects.requireNonNull(CharacterUtil.maskCardNumber(customUserDetails.getAccount().getCardNumber())));
+                            .claim("card_number", Objects.requireNonNull(CharacterUtil.maskCardNumber(customUserDetails.getAccount().getCardNumber())))
+                            .claim("authorities", authorities);
                 }
 
             }

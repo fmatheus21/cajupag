@@ -20,7 +20,7 @@ public class CustomJwtAuthenticationConverter implements Converter<Jwt, Abstract
     private final JwtGrantedAuthoritiesConverter jwtGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
 
     private Collection<? extends GrantedAuthority> extractResourceRoles(final Jwt jwt) {
-        log.info("Extracting resource roles: {}", jwt.getClaimAsStringList("authorities"));
+        log.info("Extraindo roles: {}", jwt.getClaimAsStringList("authorities"));
         return new HashSet<>(jwt.getClaimAsStringList("authorities")
                 .stream()
                 .map(SimpleGrantedAuthority::new)
@@ -29,7 +29,7 @@ public class CustomJwtAuthenticationConverter implements Converter<Jwt, Abstract
 
     @Override
     public AbstractAuthenticationToken convert(Jwt source) {
-        log.info("Converter token.");
+        log.info("Token conversor.");
         Collection<GrantedAuthority> authorities = Stream.concat(this.jwtGrantedAuthoritiesConverter.convert(source).stream(), extractResourceRoles(source).stream()).toList();
         return new JwtAuthenticationToken(source, authorities);
     }

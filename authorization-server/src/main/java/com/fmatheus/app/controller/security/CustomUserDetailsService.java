@@ -6,6 +6,7 @@ import com.fmatheus.app.model.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 
 @RequiredArgsConstructor
@@ -42,7 +44,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     private Collection<? extends GrantedAuthority> authorities() {
-        return new HashSet<>();
+        Set<SimpleGrantedAuthority> simpleGrantedAuthorities = new HashSet<>();
+        simpleGrantedAuthorities.add(new SimpleGrantedAuthority("public_permission"));
+        return simpleGrantedAuthorities;
     }
 
 }

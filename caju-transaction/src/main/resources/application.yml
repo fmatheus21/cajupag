@@ -24,7 +24,8 @@ spring:
     url: jdbc:mysql://localhost:3306/caju-auth-server?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     username: root
   jackson:
-    #default-property-inclusion: non_null
+    deserialization:
+      fail-on-unknown-properties: false
     serialization:
       fail_on_empty_beans: false
   jpa:

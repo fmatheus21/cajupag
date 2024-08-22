@@ -1,7 +1,6 @@
 package com.fmatheus.app.config;
 
 
-
 import com.fmatheus.app.CajuTransactionApplication;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
