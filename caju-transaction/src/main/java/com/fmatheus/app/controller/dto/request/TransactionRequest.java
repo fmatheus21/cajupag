@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Builder
 @Getter
@@ -23,4 +24,7 @@ public class TransactionRequest {
 
     @NotBlank
     private String merchant;
+
+    @NotNull
+    private UUID idEstablishment;
 }

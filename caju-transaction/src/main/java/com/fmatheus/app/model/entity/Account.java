@@ -31,10 +31,6 @@ public class Account implements Serializable {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-
-    @Column(name = "total_amount", nullable = false, precision = 8, scale = 2)
-    private BigDecimal totalAmount;
-
     @Column(name = "card_number", nullable = false, length = 20)
     private String cardNumber;
 

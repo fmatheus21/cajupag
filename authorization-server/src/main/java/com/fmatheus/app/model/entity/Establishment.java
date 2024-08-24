@@ -30,6 +30,9 @@ public class Establishment implements Serializable {
     @Column(name = "id", nullable = false)
     private UUID id;
 
+    @Column(name = "merchant", length = 70, nullable = false)
+    private String merchant;
+
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 

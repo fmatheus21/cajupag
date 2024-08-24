@@ -8,11 +8,11 @@ public class AppUtil {
         throw new IllegalStateException(getClass().getName());
     }
 
-    public static String determineBalanceType(String mcc) {
+    public static BalanceTypeEnum determineBalanceType(String mcc) {
         return switch (mcc) {
-            case "5411", "5412" -> BalanceTypeEnum.FOOD.name();
-            case "5811", "5812" -> BalanceTypeEnum.MEAL.name();
-            default -> BalanceTypeEnum.CASH.name();
+            case "5411", "5412" -> BalanceTypeEnum.FOOD;
+            case "5811", "5812" -> BalanceTypeEnum.MEAL;
+            default -> BalanceTypeEnum.CASH;
         };
     }
 

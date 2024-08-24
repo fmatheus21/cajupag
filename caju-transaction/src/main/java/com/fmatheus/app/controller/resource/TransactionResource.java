@@ -24,6 +24,6 @@ public class TransactionResource {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping
     public Map<String, String> performTransaction(@RequestBody @Valid TransactionRequest request, @AuthenticationPrincipal Jwt jwt) {
-        return this.facade.performTransaction(request, jwt);
+        return this.facade.startTransaction(request, jwt);
     }
 }

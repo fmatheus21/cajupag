@@ -2,7 +2,6 @@ package com.fmatheus.app.model.entity;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.UUID;
@@ -30,10 +29,6 @@ public class Account implements Serializable {
     @UuidGenerator
     @Column(name = "id", nullable = false)
     private UUID id;
-
-
-    @Column(name = "total_amount", nullable = false, precision = 8, scale = 2)
-    private BigDecimal totalAmount;
 
     @Column(name = "card_number", nullable = false, length = 20)
     private String cardNumber;

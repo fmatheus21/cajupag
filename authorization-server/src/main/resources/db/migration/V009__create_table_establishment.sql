@@ -1,7 +1,7 @@
 CREATE TABLE establishment (
   id binary(16) NOT NULL,
   id_person int NOT NULL,
-  merchant varchar(70)
+  merchant varchar(70),
   created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id),
