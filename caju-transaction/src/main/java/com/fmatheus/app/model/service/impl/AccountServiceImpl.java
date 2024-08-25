@@ -37,12 +37,7 @@ public class AccountServiceImpl implements AccountService {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Implementacao de Pessimistic Write ock. Isso impede transacoes concorrentes.
-     *
-     * @param id ID da conta
-     * @return {@link Optional<Account>}
-     */
+
     @Transactional
     @Override
     public Optional<Account> findByAccountPessimisticWriteLock(UUID id) {

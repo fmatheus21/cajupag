@@ -8,7 +8,6 @@ import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
@@ -20,6 +19,14 @@ public class AccountRepositoryImpl extends AccountRestriction implements Account
     @PersistenceContext
     private EntityManager manager;
 
+    /**
+     * Consulta a conta do cliente atraves do identificador.
+     * Estou utilizando Lock Pessimistic para que transacoes posteriores fiquem bloqueadas de ler e/ou escrever neste registro ate que a atual transacao seja concluida.
+     * Isso garante a concsistencia dos dados em requisicoes concorrentes.
+     *
+     * @param account Identificador
+     * @return {@link Optional<Account>}
+     */
     @Override
     public Optional<Account> findByAccountPessimisticWriteLock(UUID account) {
 
