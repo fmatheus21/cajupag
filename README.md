@@ -14,6 +14,8 @@
 >
 > - <code>**_authorization-server_**</code>
 > - <code>**_caju-transaction_**</code>
+>
+> Tem um vídeo explicativo na raís do projeto (demonstracao.mp4)
 
 </br></br>
 
@@ -27,12 +29,14 @@
 
 ## Como Usar <a id="como-usar"></a>
 
-> Edite o arquivo <code>**_application.yml_**</code> dos módulos <code>**_authorization-server_**</code> e <code>**_caju-transaction_**</code> e informe as seguintes variáveis de ambiente:
+> Edite os arquivos <code>**_application.yml_**</code> dos módulos <code>**_authorization-server_**</code> e <code>**_caju-transaction_**</code> e informe as seguintes variáveis de ambiente:
 >
 > - <code>**_${DATASOURCE_USERNAME:usuario_banco}_**</code>
 > - <code>**_${DATASOURCE_PASSWORD:senha_banco}_**</code>
 >
-> Execute o módulo <code>**_authorization-server_**</code> que rodará na porta 9000 (<code>**_http://localhost:9000/api/v1_**</code>). Este módulo é responsável por gerar um token de autenticação.
+> Execute o módulo <code>**_authorization-server_**</code> que rodará na porta 9000 (<code>**_http://localhost:9000/api/v1_**</code>).
+> Ao rodar este módulo, as tabelas do banco de dados serão criadas através de migrations, por isso, é extremamente importante rodar este módulo primeiramente.
+> Este módulo é responsável por gerar um token de autenticação.
 
 ```sh
 Auth Type: Basic Auth
@@ -49,7 +53,8 @@ curl
 --data-urlencode 'password=123456'
 ```
 
-> Execute o módulo <code>**_caju-transaction_**</code> que rodará na porta 9100 (<code>**_http://localhost:9100/api/v1_**</code>). Este módulo é responsável pelas transações.
+> Execute o módulo <code>**_caju-transaction_**</code> que rodará na porta 9100 (<code>**_http://localhost:9100/api/v1_**</code>).  
+> Este módulo é responsável pelas transações.
 
 ```sh
 curl
