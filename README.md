@@ -15,8 +15,6 @@
 >
 > - <code>**_authorization-server_**</code>
 > - <code>**_caju-transaction_**</code>
->
-> Tem um vídeo explicativo na raís do projeto (demonstracao.mp4)
 
 </br></br>
 
