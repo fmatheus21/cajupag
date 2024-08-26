@@ -79,7 +79,6 @@ curl
 ![Spring Boot](https://img.shields.io/static/v1?label=spring-boot&message=3.2.2&color=green)
 ![MySql](https://img.shields.io/static/v1?label=mysql&message=8.3.0&color=green)
 ![Lombok](https://img.shields.io/static/v1?label=lombok&message=1.18.30&color=green)
-![ModelMapper](https://img.shields.io/static/v1?label=model-mapper&message=3.1.0&color=green)
 ![Commons](https://img.shields.io/static/v1?label=commons-lang3&message=3.13.0&color=green)
 ![Flyway](https://img.shields.io/static/v1?label=flywaydb&message=9.22.3&color=green)
 ![jUnit](https://img.shields.io/static/v1?label=junit&message=5.7.0&color=green)
